@@ -1,2 +1,2 @@
 # Exchanger
-First Django project. Web valute converter
+First Django project. Web currency converter
