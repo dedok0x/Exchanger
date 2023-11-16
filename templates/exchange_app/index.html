@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <form action="", method="POST">
+        {% csrf_token %}
+        <b>Введите сумму</b>
+        <input type="text", name="from-amount">
+        {% if error %}
+        	<b style="color: red"> Введите корректное число</b>
+        {% endif %}
+        <select class="form-control" name="from-curr" id="from-curr">
+            {% for currency in currencies %}
+                <option value="{{ currency }}">{{ currency }}</option>
+            {% endfor %}
+        </select>
+        <b>в:</b>
+        <select class="form-control" name="to-curr" id="to-curr">
+            {% for currency in currencies %}
+                <option value="{{ currency }}">{{ currency }}</option>
+            {% endfor %}
+        </select>
+        {% if converted_amount %}
+        <div>
+            <h3>{{ from_amount }} {{ from_curr }} в {{ to_curr }}: {{ converted_amount }}</h3>
+        </div>
+        {% endif %}
+        <button type="submit">Рассчитать</button>
+    </form>
+{% endblock %}
